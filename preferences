@@ -1,0 +1,9 @@
+Theme="Win95/default.theme"
+DesktopBackgroundColor="rgb:00/80/80"
+TaskBarShowClock=1
+TaskBarShowWindows=1
+ShowProgramsMenu=1
+ShowTaskBar=1
+TaskBarAutoHide=0
+ClockFormat="%l:%M %p"
+QuickSwitch=1

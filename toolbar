@@ -1,0 +1,3 @@
+prog "Firefox" firefox-esr firefox-esr
+prog "Terminal" lxterminal lxterminal
+prog "Explorer" pcmanfm pcmanfm

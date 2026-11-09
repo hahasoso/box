@@ -1,0 +1,8 @@
+prog "Firefox" firefox-esr firefox-esr
+prog "BrowseBOX (Home)" firefox-esr firefox-esr file:///usr/share/boxos/home.html
+prog "BOX Terminal" lxterminal lxterminal
+prog "BOX Explorer" pcmanfm pcmanfm
+prog "BOX Notes" mousepad mousepad
+prog "BOX Calculator" galculator galculator
+separator
+prog "Network" nm-connection-editor nm-connection-editor

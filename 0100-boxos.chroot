@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+cat > /etc/os-release <<OS
+PRETTY_NAME="BoxOS 0.3.0"
+NAME="BoxOS"
+VERSION="0.3.0 DEV"
+ID=boxos
+ID_LIKE=debian
+HOME_URL="https://example.invalid/boxos"
+OS
+echo "BoxOS 0.3.0 DEV \\n \\l" > /etc/issue
+mkdir -p /usr/lib/firefox-esr/distribution
+cat > /usr/lib/firefox-esr/distribution/policies.json <<POL
+{"policies":{"Homepage":{"URL":"file:///usr/share/boxos/home.html","StartPage":"homepage"},"OverrideFirstRunPage":"","DisableTelemetry":true,"DontCheckDefaultBrowser":true,"NoDefaultBookmarks":true}}
+POL
+systemctl enable NetworkManager 2>/dev/null || true

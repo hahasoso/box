@@ -1,0 +1,41 @@
+name: Build BoxOS 0.3.0 ISO
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'build.sh'
+      - 'docker-build.sh'
+      - 'config/**'
+      - '.github/workflows/build-boxos-iso.yml'
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - name: Check out BoxOS source
+        uses: actions/checkout@v4
+      - name: Build Debian 12 live ISO with Firefox ESR
+        run: |
+          chmod +x build.sh docker-build.sh
+          ./docker-build.sh
+      - name: Verify ISO output
+        run: |
+          test -s BoxOS-0.3.0.iso
+          test -s BoxOS-0.3.0.iso.sha256
+          sha256sum -c BoxOS-0.3.0.iso.sha256
+          file BoxOS-0.3.0.iso
+          ls -lh BoxOS-0.3.0.iso
+      - name: Upload bootable ISO and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: BoxOS-0.3.0-ISO
+          path: |
+            BoxOS-0.3.0.iso
+            BoxOS-0.3.0.iso.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14

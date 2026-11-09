@@ -1,0 +1,15 @@
+# live-build generated files
+.auto/
+.cache/
+.cache*
+binary/
+chroot/
+config/binary
+config/bootstrap
+config/chroot
+config/common
+config/source
+live-image*.iso
+BoxOS-0.3.0.iso
+BoxOS-0.3.0.iso.sha256
+*.log
